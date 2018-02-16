@@ -94,6 +94,7 @@ class FluentClient extends AbstractFluentAdapter implements ClientInterface
                        'oauth_clients.secret as secret',
                        'oauth_clients.name as name')
                    ->where('oauth_clients.id', $clientId)
+		   ->where('oauth_clients.activo', true)
                    ->where('oauth_clients.secret', $clientSecret);
         } elseif (!is_null($clientSecret) && !is_null($redirectUri)) {
             $query = $this->getConnection()->table('oauth_clients')
